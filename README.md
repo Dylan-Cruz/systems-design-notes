@@ -4,8 +4,6 @@
 
 ### Intro
 
-1. what is a systems design interview
-1. functional and non functional requirements
 1. estimations
 
 ### Basics
