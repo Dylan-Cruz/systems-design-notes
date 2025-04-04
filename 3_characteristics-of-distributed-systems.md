@@ -36,4 +36,8 @@ The capability of a system, process, or network to grow to manage increased dema
 
 ## Serviceability or Manageability
 
-How easy a distributed system is to operate and maintain.
+- How easy a distributed system is to operate and maintain and how fast it is to repair.
+- Contributing factors:
+  - ease of diagnosing and understanding problems when the occur
+  - ease of making changes
+  - how simple the system is to operate
