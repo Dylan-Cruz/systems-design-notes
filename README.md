@@ -4,18 +4,19 @@
 
 ### Intro
 
-1. estimations
+1. ~~Estimations~~
 
 ### Basics
 
-1. Characteristics of Distributed Systems
-   1. Scalability
-   2. Reliability
-   3. Availability
-   4. Efficiency
-   5. Maintainability
-1. Load Balancing
-1. Caching
+1. ~~Characteristics of Distributed Systems~~
+   1. ~~ Scalability~~
+   2. ~~Reliability~~
+   3. ~~Availability~~
+   4. ~~Efficiency~~
+   5. ~~Maintainability~~
+1. ~~DNS~~
+1. ~~Load Balancing~~
+1. ~~Caching~~
 1. Data Partitioning
 1. Indexes
 1. Proxies
@@ -50,14 +51,14 @@
 1. CDN Usage v direct server serving
 1. Serverless vs Traditional server based
 1. Stateful v Stateless architecture
-1. Hybri cloud storage v all cloud storage
+1. Hybrid cloud storage v all cloud storage
 1. Token Bucket v Leaky Bucket
 1. Read heavy v write heavy system
 
 ### Problems
 
 1. Design pastebin
-1. DEsign instagram
+1. Design instagram
 1. Dropbox
 1. Facebook messanger
 1. Twitter
