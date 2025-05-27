@@ -17,9 +17,9 @@
 1. ~~DNS~~
 1. ~~Load Balancing~~
 1. ~~Caching~~
-1. Data Partitioning
-1. Indexes
-1. Proxies
+1. ~~Data Partitioning~~
+1. ~~Indexes~~
+1. ~~Proxies~~
 1. Redundancy and Replication
 1. SQL v NoSQL
 1. CAP Theorem
