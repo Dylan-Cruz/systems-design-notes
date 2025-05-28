@@ -1,57 +1,84 @@
-# DNS
+## Essential DNS Concepts for Systems Design Interviews
 
-- Domain Name System that translates human friendly hostnames into machine IP addresses
-- ex.) www.googe.com -> 172.217.18.36
+**What is DNS?**
 
-## Terminologies
+- The Domain Name System (DNS) is a distributed, hierarchical database that translates human-readable domain names (like `www.example.com`) into machine-usable IP addresses (like `192.0.2.1`), enabling browsers and other clients to locate and communicate with resources on the internet.
 
-- **Domain Registrar**: where you register your domain name. (Route 53, GoDaddy...)
-- **DNS Service**: service to manage DNS records. Usually provided by registrar but you can use route 53 as your dns service but godaddy is your registrar
-- **DNS Records**: (A,AAAA,CNAME,NS)
-- **Zone File**: contains DNS records
-- **Name Server**: resolves DNS queries (Authoritative or Non-Authoritative)
-- **Top Level Domain**: .com, .us, .gov, .org
-- **Second Level Domain**: amazon.com, google.com
-- **Sub Domain**: mail.google.com
-- **Protocol**: http, sftp, ssh, smtp
+---
+
+**Why is DNS Important?**
+
+- DNS allows users to use memorable names instead of numeric IP addresses, making the internet accessible and user-friendly.
+- It is foundational to almost every internet service; without DNS, users would need to remember IP addresses for every website or service they want to access.
+
+---
 
 ## How DNS Works
 
-### Scenario
+**DNS Resolution Process**
 
-You have a webserver hosted at example.com with an IP of 9.10.11.12. You would like to access this server using the domain name from your web browser.
+1. **User Request:** User enters a domain name in a browser.
+2. **Local Check:** The system checks its local hosts file and DNS cache for a matching IP address.
+3. **Recursive Resolver:** If not found locally, the request is sent to a recursive DNS resolver.
+4. **Root Server:** If the resolver doesn’t have the answer cached, it queries a root DNS server.
+5. **TLD Server:** The root server directs the resolver to the appropriate Top-Level Domain (TLD) server (e.g., `.com`, `.org`).
+6. **Authoritative Server:** The TLD server points to the authoritative DNS server for the domain, which holds the actual DNS records.
+7. **Response:** The authoritative server returns the IP address to the resolver, which caches it and passes it back to the client.
+8. **Caching:** To improve efficiency and reduce latency, DNS responses are cached at multiple levels, governed by a time-to-live (TTL) value.
 
-### Steps
+---
 
-1. Enter example.com in the url bar and go
-2. Ask your local DNS server usually assigned by company or ISP
-3. If the Local server hasn't seen this address before, ask the Root DNS Server (managed by ICANN)
-4. The Root server directs callers to a top level domain dns server for the corresponding top level domain (.com, .org, etc)
-5. The browser then asks the top level domain dns server (managed by ICANN) for example.com
-6. The TLD DNS returns an IP of the SLD DNS Server which is managed by your domain registrar
-7. The browser asks the SLD for example.com
-8. The SLD DNS server returns the ip of example.com after caching it
-9. the browser uses the IP to load the page from example.com
+## DNS Hierarchy and Components
 
-## Records
+| Component                 | Role                                                                                 |
+| :------------------------ | :----------------------------------------------------------------------------------- |
+| **Root Servers**          | Top of the DNS hierarchy; direct queries to TLD servers                              |
+| **TLD Servers**           | Manage domains under a specific TLD (e.g., `.com`, `.net`)                           |
+| **Authoritative Servers** | Store actual DNS records for a domain; provide final answers to DNS queries          |
+| **Resolvers**             | Intermediaries that perform the recursive search to resolve domain names for clients |
+| **Zone Files**            | Text files on authoritative servers containing DNS resource records for a domain     |
 
-### Record Parts
+---
 
-Each dns record contains:
+## Common DNS Record Types
 
-- **Domain/Subdomain name**: example.com
-- **Record Type**: A, AAAA, CNAME, NS
-- **Value**: 12.34.56.78
-- **Routing Policy**:
-- **TTL**: amount of time the record is cached at DNS Resolvers
+| Record Type | Purpose                                                                              |
+| :---------- | :----------------------------------------------------------------------------------- |
+| **A**       | Maps domain to IPv4 address                                                          |
+| **AAAA**    | Maps domain to IPv6 address                                                          |
+| **CNAME**   | Canonical name record; makes one domain an alias for another                         |
+| **MX**      | Specifies mail servers for the domain                                                |
+| **NS**      | Specifies the authoritative name servers for the domain                              |
+| **TXT**     | Holds arbitrary text, often for verification or security (e.g., SPF, DKIM for email) |
 
-### Record Types
+---
 
-- **A**: maps a hostname to IPv4
-- **AAAA**: maps a hostname to IPv6
-- **CNAME**: maps a hostname to another hostname
-- **NS**: Name servers for the hosted zone
+## DNS in Systems Design
 
-## Hosted Zones
+- **Distribution and Delegation:** DNS is distributed for scalability and reliability. Zone files are split and delegated to different servers, reducing load and management complexity.
+- **Caching:** Reduces lookup latency and load on authoritative servers, but can cause propagation delays when records are updated.
+- **Security:** DNS can be a target for attacks (e.g., spoofing, amplification). DNSSEC (DNS Security Extensions) adds cryptographic signatures to protect against certain attacks.
+- **Cloud and Modern Infrastructure:** DNS is integral for service discovery, load balancing, and traffic management in cloud environments. Managed DNS services are common in cloud platforms.
 
-A container for records that define how to route traffic to a domain and its subdomains
+---
+
+## Key DNS Terminology
+
+- **Domain:** A group of nodes sharing a common label (e.g., `example.com`).
+- **Node:** Any endpoint in the DNS hierarchy (can be a device or service).
+- **Host:** A node running a service (e.g., a web server).
+- **Resolver:** The system or software component that initiates DNS queries on behalf of applications.
+- **Zone:** A portion of the DNS namespace managed by a specific organization or administrator; stored in a zone file.
+
+---
+
+## Essential Takeaways for Interviews
+
+- DNS is a distributed, hierarchical, and highly available system critical to internet functionality.
+- Understanding the DNS query process, caching, record types, and delegation is fundamental for systems design.
+- DNS impacts performance, scalability, reliability, and security of distributed systems.
+- Familiarity with DNS is expected for roles involving web infrastructure, cloud services, and networked applications.
+
+---
+
+**Tip:** Be ready to discuss DNS failure scenarios (e.g., cache poisoning, propagation delays), DNS scaling strategies, and how DNS fits into modern architectures like microservices and cloud-native environments.
