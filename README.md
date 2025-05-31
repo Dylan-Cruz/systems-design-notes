@@ -27,26 +27,26 @@
 1. ~~Consistent Hashing~~
 1. ~~Long-Polling, WebSockets, and Server Sent Events~~
 1. ~~Bloom Filters~~
-1. Quorum
-1. Leader and Follower
-1. Heartbeat
-1. Checksum
+1. ~~Quorum~~
+1. ~~Leader and Follower~~
+1. ~~Heartbeat~~
+1. ~~Checksum~~
 
 ### Trade-offs
 
-1. Strong v Eventual Consistency
-1. Latency v Throughput
+1. ~~Strong v Eventual Consistency~~
+1. ~~Latency v Throughput~~
 1. ~~ACID v BASE properties in databases~~
-1. Read-Through v Write-Through Cache
-1. Batch Processing v Stream Processing
-1. Primary-Replica v Peer to peer replication
-1. Rest v RPC
-1. Polling, Long polling, websockets, web hooks
-1. CDN Usage v direct server serving
-1. Serverless vs Traditional server based
-1. Stateful v Stateless architecture
-1. Token Bucket v Leaky Bucket
-1. Read heavy v write heavy system
+1. ~~Read-Through v Write-Through Cache~~
+1. ~~Batch Processing v Stream Processing~~
+1. ~~Primary-Replica v Peer to peer replication~~
+1. ~~Rest v RPC~~
+1. ~~Polling, Long polling, websockets, web hooks~~
+1. ~~CDN Usage v direct server serving~~
+1. ~~Serverless vs Traditional server based~~
+1. ~~Stateful v Stateless architecture~~
+1. ~~Token Bucket v Leaky Bucket~~
+1. ~~Read heavy v write heavy system~~
 
 ### Problems
 
